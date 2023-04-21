@@ -1,16 +1,23 @@
-document.getElementById('upload-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  var fileList = document.getElementById('file-input').files;
-  var fileListContainer = document.getElementById('file-list');
-  fileListContainer.innerHTML = '';
+document.getElementById('uploadButton').addEventListener('click', function() {
+    var fileInput = document.getElementById('fileInput');
+    var fileList = document.getElementById('fileList');
 
-  for (var i = 0; i < fileList.length; i++) {
-    var listItem = document.createElement('li');
-    listItem.className = 'file-item';
-    listItem.textContent = fileList[i].name;
-    fileListContainer.appendChild(listItem);
-  }
+    var file = fileInput.files[0];
+    var fileName = file.name;
 
-  // You can add logic here to send the files to a server for processing
-  // using XMLHttpRequest or Fetch API.
+    var fileReader = new FileReader();
+    fileReader.onload = function() {
+        var fileData = fileReader.result;
+
+        var fileLink = document.createElement('a');
+        fileLink.href = fileData;
+        fileLink.textContent = fileName;
+        fileLink.target = '_blank';
+
+        var fileItem = document.createElement('div');
+        fileItem.appendChild(fileLink);
+
+        fileList.appendChild(fileItem);
+    };
+    fileReader.readAsDataURL(file);
 });

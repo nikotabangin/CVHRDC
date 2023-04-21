@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>File Uploader</title>
-  <link rel="stylesheet" href="style.css">
+    <title>File Upload Example</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1>File Uploader</h1>
-  <form id="upload-form" enctype="multipart/form-data">
-    <input type="file" id="file-input" multiple>
-    <button type="submit">Upload Files</button>
-  </form>
-  <ul id="file-list"></ul>
-  <script src="script.js"></script>
+    <h1>File Upload Example</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="fileInput">
+        <input type="button" id="uploadButton" value="Upload">
+    </form>
+    <div id="fileList"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
